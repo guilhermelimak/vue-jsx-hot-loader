@@ -51,12 +51,8 @@ module.exports = ({
   if (!module.hot.data) {
     // If no data, we need to create the record.
     api.createRecord(hotId, component);
-  } else if (cache[hotId] === serialized) {
-    // Rerender only since the component hasn't changed.
-    api.rerender(hotId, component);
   } else {
-    // Reload the component.
-    api.reload(hotId, component);
+    api.rerender(hotId, component);
   }
 
   // Save the serialized component to the cache.
